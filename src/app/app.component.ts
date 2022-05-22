@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'planificador-financiero-angular-frontend';
+  title:string = 'Bienvenido al Planificador financiero';
+  tituloDivisa:string = "Divisas"; 
+  tituloCategoria:string = "Categorías"
 }
