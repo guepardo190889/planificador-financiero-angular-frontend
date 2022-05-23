@@ -7,6 +7,7 @@ import { PieComponent } from "./componentes/pie/pie.component";
 import { DirectivaComponent } from "./componentes/directiva/directiva.component";
 import { DivisaComponent } from "./componentes/divisa/divisa.component";
 import { RouterModule, Routes } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
 
 const RUTAS: Routes = [
   { path: "", redirectTo: "/divisas", pathMatch: "full" },
@@ -22,7 +23,7 @@ const RUTAS: Routes = [
     DirectivaComponent,
     DivisaComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(RUTAS)],
+  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(RUTAS)],
   providers: [],
   bootstrap: [AppComponent],
 })

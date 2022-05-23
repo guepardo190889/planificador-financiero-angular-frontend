@@ -1,15 +1,20 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
+import { map } from "rxjs/operators";
 import { Divisa } from "../componentes/divisa/divisa";
-import { DIVISAS } from "../componentes/divisa/divisa.json";
 
 @Injectable({
   providedIn: "root",
 })
 export class DivisaService {
-  constructor() {}
+  private url: string = "http://localhost:8080/api/v1/divisas";
 
-  buscar(): Observable<Divisa[]> {
-    return of(DIVISAS);
+  constructor(private http: HttpClient) {}
+
+   buscar(): Observable<Divisa[]> {
+    return this.http
+      .get(this.url)
+      .pipe(map((response) => response as Divisa[]));
   }
 }
