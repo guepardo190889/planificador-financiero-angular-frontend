@@ -1,3 +1,22 @@
-<p>
-  divisa works!
-</p>
+<div class="card border-primary mb-3">
+  <div class="card-header">Divisas</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de divisas</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>nombre</th>
+          <th>abreviación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let divisa of divisas">
+          <td>{{ divisa.id }}</td>
+          <td>{{ divisa.nombre }}</td>
+          <td>{{ divisa.abreviacion }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
