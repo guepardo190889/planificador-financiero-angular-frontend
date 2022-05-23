@@ -11,7 +11,15 @@ export class DivisaComponent implements OnInit {
   divisas: Divisa[];
 
   constructor(private divisaService: DivisaService) {
-    this.divisas = divisaService.buscar();
+    this.divisaService.buscar().subscribe(
+      divisas => this.divisas = divisas
+    );
+
+    /*this.divisaService.buscar().subscribe(
+      function(divisas){
+        this.divisas = divisas;
+      }
+    );*/
   }
 
   ngOnInit() {
