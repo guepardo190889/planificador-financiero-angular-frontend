@@ -8,11 +8,14 @@ import { DirectivaComponent } from "./componentes/directiva/directiva.component"
 import { DivisaComponent } from "./componentes/divisa/divisa.component";
 import { RouterModule, Routes } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
+import { FormComponent } from "./componentes/divisa/form.component";
+import { FormsModule } from "@angular/forms";
 
 const RUTAS: Routes = [
   { path: "", redirectTo: "/divisas", pathMatch: "full" },
   { path: "divisas", component: DivisaComponent },
   { path: "directivas", component: DirectivaComponent },
+  { path: "divisas/form", component: FormComponent },
 ];
 
 @NgModule({
@@ -22,8 +25,14 @@ const RUTAS: Routes = [
     PieComponent,
     DirectivaComponent,
     DivisaComponent,
+    FormComponent
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(RUTAS)],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(RUTAS),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

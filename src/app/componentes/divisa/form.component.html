@@ -1,0 +1,38 @@
+<div class="card bg-dark text-white">
+  <div class="card-header">{{ titulo }}</div>
+  <div class="card-body">
+    <form (ngSubmit)="guardar()">
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2 my-2">Nombre</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="divisa.nombre"
+            name="nombre"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="abreviacion" class="col-form-label col-sm-2 my-2"
+          >Abreviación</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="divisa.abreviacion"
+            name="abreviacion"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="button">Guardar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
