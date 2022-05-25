@@ -10,9 +10,10 @@ import { RouterModule, Routes } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { FormComponent } from "./componentes/divisa/form.component";
 import { FormsModule } from "@angular/forms";
+import { InicioComponent } from './componentes/inicio/inicio.component';
 
 const RUTAS: Routes = [
-  { path: "", redirectTo: "/divisas", pathMatch: "full" },
+  { path: "", component: InicioComponent},
   { path: "divisas", component: DivisaComponent },
   { path: "directivas", component: DirectivaComponent },
   { path: "divisas/form", component: FormComponent },
@@ -25,7 +26,8 @@ const RUTAS: Routes = [
     PieComponent,
     DirectivaComponent,
     DivisaComponent,
-    FormComponent
+    FormComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
