@@ -19,7 +19,7 @@ export class FormComponent implements OnInit {
   public guardar(): void {
     this.divisaService.guardar(this.divisa).subscribe((divisaGuardada) => {
       this.router.navigate(["/divisas"]);
-      Swal.fire("Nueva Divisa", `Divisa ${divisaGuardada.nombre}`, "success");
+      Swal.fire("Nueva Divisa", `Divisa ${divisaGuardada.nombre} creada con éxito!`, "success");
     });
   }
 }
