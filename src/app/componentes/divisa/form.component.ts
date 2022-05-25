@@ -9,8 +9,8 @@ import { Divisa } from "./divisa";
   templateUrl: "./form.component.html",
 })
 export class FormComponent implements OnInit {
-  private titulo: string = "Guardar Divisa";
-  private divisa: Divisa = new Divisa();
+  public titulo: string = "Guardar Divisa";
+  public divisa: Divisa = new Divisa();
 
   constructor(private divisaService: DivisaService, private router: Router) {}
 
