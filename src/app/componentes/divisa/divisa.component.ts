@@ -10,7 +10,7 @@ export class DivisaComponent implements OnInit {
   divisas: Divisa[];
 
   constructor(private divisaService: DivisaService) {
-    this.divisaService.buscar().subscribe(
+    this.divisaService.buscarTodos().subscribe(
       divisas => this.divisas = divisas
     );
   }

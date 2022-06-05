@@ -18,14 +18,25 @@
         <tr>
           <th>Id</th>
           <th>Nombre</th>
-          <th>Abreviación</th>
+          <th>Código</th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let divisa of divisas">
           <td>{{ divisa.id }}</td>
           <td>{{ divisa.nombre }}</td>
-          <td>{{ divisa.abreviacion }}</td>
+          <td>{{ divisa.codigo }}</td>
+          <td>
+            <button
+              type="button"
+              name="button"
+              [routerLink]="['/divisas/form', divisa.id]"
+              class="btn btn-primary"
+            >
+              Editar
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
