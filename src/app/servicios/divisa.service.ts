@@ -42,11 +42,11 @@ export class DivisaService {
       );
   }
 
-  eliminar(divisa: Divisa): Observable<Divisa> {
-    console.log("Eliminar divisa: " + divisa.id);
+  eliminar(id: number): Observable<Divisa> {
+    console.log("Eliminar divisa: " + id);
 
     return this.http
-      .delete(`${this.url}/${divisa.id}`, { headers: this.headers })
+      .delete(`${this.url}/${id}`, { headers: this.headers })
       .pipe(
         map((response: any) => {
           console.log(response);
