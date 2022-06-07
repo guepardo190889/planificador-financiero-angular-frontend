@@ -46,7 +46,7 @@
             class="btn btn-primary"
             role="button"
             (click)="guardar()"
-            *ngIf="!divisa.id else botonEditar"
+            *ngIf="!divisa.id; else botonEditar"
           >
             Guardar
           </button>
