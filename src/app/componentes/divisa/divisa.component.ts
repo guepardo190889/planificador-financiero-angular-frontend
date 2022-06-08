@@ -8,6 +8,7 @@ import { Divisa } from "./divisa";
   templateUrl: "./divisa.component.html",
 })
 export class DivisaComponent implements OnInit {
+  public titulo: string = "Divisas";
   divisas: Divisa[];
 
   constructor(private divisaService: DivisaService) {
