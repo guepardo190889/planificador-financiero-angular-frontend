@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable, throwError } from "rxjs";
+import { catchError, map } from "rxjs/operators";
+import Swal from "sweetalert2";
 import { Divisa } from "../componentes/divisa/divisa";
 
 @Injectable({
@@ -14,30 +15,34 @@ export class DivisaService {
     "Content-Type": "application/json",
   });
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   guardar(divisa: Divisa): Observable<Divisa> {
-    console.log("Guardar divisa (service)");
-    console.log(divisa);
-
     return this.http.post(this.url, divisa, { headers: this.headers }).pipe(
       map((response: any) => {
-        console.log(response);
-
         return response.divisa as Divisa;
+      }),
+      catchError(e => {
+        this.router.navigate(["/divisas"]);
+        Swal.fire("Error", e.error.mensaje, "error");
+
+        return throwError(e);
       })
     );
   }
 
   actualizar(divisa: Divisa): Observable<Divisa> {
-    console.log("Actualizar divisa: " + divisa.id);
-
     return this.http
       .put(`${this.url}/${divisa.id}`, divisa, { headers: this.headers })
       .pipe(
         map((response: any) => {
-          console.log(response);
           return response.divisa as Divisa;
+        }),
+        catchError(e => {
+          this.router.navigate(["/divisas"]);
+          Swal.fire("Error", e.error.mensaje, "error");
+
+          return throwError(e);
         })
       );
   }
@@ -51,28 +56,39 @@ export class DivisaService {
         map((response: any) => {
           console.log(response);
           return response.divisa as Divisa;
+        }),
+        catchError(e => {
+          this.router.navigate(["/divisas"]);
+          Swal.fire("Error", e.error.mensaje, "error");
+
+          return throwError(e);
         })
       );
   }
 
   buscarTodos(): Observable<Divisa[]> {
-    console.log("Consultar todas las divisas");
-
     return this.http.get(this.url).pipe(
       map((response: any) => {
-        console.log(response);
         return response.divisas as Divisa[];
+      }),
+      catchError(e => {
+        Swal.fire("Error", e.error.mensaje, "error");
+
+        return throwError(e);
       })
     );
   }
 
   buscarPorId(id: number): Observable<Divisa> {
-    console.log("Consultar divisa: " + id);
-
     return this.http.get(`${this.url}/${id}`).pipe(
       map((response: any) => {
-        console.log(response);
         return response.divisa as Divisa;
+      }),
+      catchError(e => {
+        this.router.navigate(["/divisas"]);
+        Swal.fire("Error", e.error.mensaje, "error");
+
+        return throwError(e);
       })
     );
   }
