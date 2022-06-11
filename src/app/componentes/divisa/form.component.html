@@ -10,6 +10,8 @@
             class="form-control"
             [(ngModel)]="divisa.nombre"
             name="nombre"
+            required
+            maxlength="32"
           />
         </div>
       </div>
@@ -22,6 +24,9 @@
             class="form-control"
             [(ngModel)]="divisa.codigo"
             name="codigo"
+            required
+            minlength="3"
+            maxlength="3"
           />
         </div>
       </div>
