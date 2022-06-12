@@ -11,6 +11,7 @@ import { Divisa } from "./divisa";
 export class FormComponent implements OnInit {
   public titulo: string = "Guardar Divisa";
   public divisa: Divisa = new Divisa();
+  public errores: string[];
 
   constructor(
     private divisaService: DivisaService,
@@ -35,29 +36,30 @@ export class FormComponent implements OnInit {
   }
 
   public guardar(): void {
-    console.log("Guardar divisa (form)");
-    console.log(this.divisa);
-
-    this.divisaService.guardar(this.divisa).subscribe((divisaGuardada) => {
-      this.router.navigate(["/divisas"]);
-      Swal.fire(
-        "Nueva Divisa",
-        `Divisa ${divisaGuardada.nombre} creada con éxito!`,
-        "success"
-      );
-    });
+    this.divisaService.guardar(this.divisa).subscribe(
+      (divisaGuardada) => {
+        this.router.navigate(["/divisas"]);
+        Swal.fire("Guardado", `Guardado realizado exitosamente`, "success");
+      },
+      (error) => {
+        this.errores = error.error.errores as string[];
+      }
+    );
   }
 
   public actualizar(): void {
-    this.divisaService
-      .actualizar(this.divisa)
-      .subscribe((divisaActualizada) => {
+    this.divisaService.actualizar(this.divisa).subscribe(
+      (divisaActualizada) => {
         this.router.navigate(["/divisas"]);
         Swal.fire(
-          "Divisa actualizada",
-          `Divisa ${divisaActualizada.nombre} actualizada con éxito!`,
+          "Actualizado",
+          `Actualizado realizado exitosamente`,
           "success"
         );
-      });
+      },
+      (error) => {
+        this.errores = error.error.errores as string[];
+      }
+    );
   }
 }

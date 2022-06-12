@@ -30,8 +30,8 @@ export class DivisaComponent implements OnInit {
 
     swalWithBootstrapButtons
       .fire({
-        title: "¿Estás seguro?",
-        text: `¿Seguro que desesa eliminar la divisa ${divisa.nombre}?`,
+        title: "Confirmación",
+        text: `¿Desesa eliminar la divisa ${divisa.nombre}?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Si, eliminar",
@@ -46,8 +46,8 @@ export class DivisaComponent implements OnInit {
             );
 
             swalWithBootstrapButtons.fire(
-              "¡Divisa Eliminada!",
-              `Divisa ${divisa.nombre} eliminada con éxito`,
+              "Eliminado",
+              `Eliminado realizado exitosamente`,
               "success"
             );
           });

@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
+import { Logs } from "selenium-webdriver";
 import Swal from "sweetalert2";
 import { Divisa } from "../componentes/divisa/divisa";
 
@@ -15,16 +16,20 @@ export class DivisaService {
     "Content-Type": "application/json",
   });
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   guardar(divisa: Divisa): Observable<Divisa> {
     return this.http.post(this.url, divisa, { headers: this.headers }).pipe(
       map((response: any) => {
         return response.divisa as Divisa;
       }),
-      catchError(e => {
+      catchError((e) => {
+        if (e.status == 400 || e.status == 409) {
+          return throwError(e);
+        }
+
         this.router.navigate(["/divisas"]);
-        Swal.fire("Error", e.error.mensaje, "error");
+        Swal.fire("Error", e.error.error, "error");
 
         return throwError(e);
       })
@@ -38,9 +43,13 @@ export class DivisaService {
         map((response: any) => {
           return response.divisa as Divisa;
         }),
-        catchError(e => {
+        catchError((e) => {
+          if (e.status == 400 || e.status == 409) {
+            return throwError(e);
+          }
+
           this.router.navigate(["/divisas"]);
-          Swal.fire("Error", e.error.mensaje, "error");
+          Swal.fire("Error", e.error.error, "error");
 
           return throwError(e);
         })
@@ -48,18 +57,15 @@ export class DivisaService {
   }
 
   eliminar(id: number): Observable<Divisa> {
-    console.log("Eliminar divisa: " + id);
-
     return this.http
       .delete(`${this.url}/${id}`, { headers: this.headers })
       .pipe(
         map((response: any) => {
-          console.log(response);
           return response.divisa as Divisa;
         }),
-        catchError(e => {
+        catchError((e) => {
           this.router.navigate(["/divisas"]);
-          Swal.fire("Error", e.error.mensaje, "error");
+          Swal.fire("Error", e.error.error, "error");
 
           return throwError(e);
         })
@@ -71,8 +77,8 @@ export class DivisaService {
       map((response: any) => {
         return response.divisas as Divisa[];
       }),
-      catchError(e => {
-        Swal.fire("Error", e.error.mensaje, "error");
+      catchError((e) => {
+        Swal.fire("Error", e.error.error, "error");
 
         return throwError(e);
       })
@@ -84,9 +90,9 @@ export class DivisaService {
       map((response: any) => {
         return response.divisa as Divisa;
       }),
-      catchError(e => {
+      catchError((e) => {
         this.router.navigate(["/divisas"]);
-        Swal.fire("Error", e.error.mensaje, "error");
+        Swal.fire("Error", e.error.error, "error");
 
         return throwError(e);
       })
