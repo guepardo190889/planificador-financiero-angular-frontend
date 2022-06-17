@@ -12,6 +12,7 @@ import { FormComponent } from "./componentes/divisa/form.component";
 import { FormsModule } from "@angular/forms";
 import { InicioComponent } from "./componentes/inicio/inicio.component";
 import { EntidadFinancieraComponent } from "./componentes/entidad-financiera/entidad-financiera.component";
+import { EntidadFinancieraFormComponent } from "./componentes/entidad-financiera/entidad-financiera-form.component";
 
 const RUTAS: Routes = [
   { path: "", component: InicioComponent },
@@ -20,6 +21,10 @@ const RUTAS: Routes = [
   { path: "divisas/form", component: FormComponent },
   { path: "divisas/form/:id", component: FormComponent },
   { path: "entidades-financieras", component: EntidadFinancieraComponent },
+  {
+    path: "entidades-financieras/form",
+    component: EntidadFinancieraFormComponent,
+  },
 ];
 
 @NgModule({
@@ -32,6 +37,7 @@ const RUTAS: Routes = [
     FormComponent,
     InicioComponent,
     EntidadFinancieraComponent,
+    EntidadFinancieraFormComponent,
   ],
   imports: [
     BrowserModule,

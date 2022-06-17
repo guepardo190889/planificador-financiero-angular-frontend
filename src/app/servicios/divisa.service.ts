@@ -3,7 +3,6 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
-import { Logs } from "selenium-webdriver";
 import Swal from "sweetalert2";
 import { Divisa } from "../componentes/divisa/divisa";
 
