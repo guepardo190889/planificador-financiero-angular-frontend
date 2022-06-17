@@ -1,0 +1,58 @@
+<div class="card border-primary mb-3">
+  <div class="card-header">
+    {{ titulo }}
+  </div>
+  <div class="card-body text-primary">
+    <button
+      type="button"
+      class="btn btn-rounded btn-primary"
+      [routerLink]="['/entidades-financieras/form']"
+    >
+      Guardar Entidad Financiera
+    </button>
+  </div>
+
+  <div class="alert alert-info" *ngIf="entidadesFinancieras?.length == 0">
+    No se encontraron entidades financieras
+  </div>
+
+  <table
+    class="table table-bordered table-striped"
+    *ngIf="entidadesFinancieras?.length > 0"
+  >
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entidadFinanciera of entidadesFinancieras">
+        <td>{{ entidadFinanciera.nombre }}</td>
+        <td>{{ entidadFinanciera.descripcion }}</td>
+        <td>{{ entidadFinanciera.tipo }}</td>
+        <td>
+          <button
+            type="button"
+            name="button"
+            class="btn btn-primary btn-sm"
+            [routerLink]="['/entidades-financieras/form', entidadFinanciera.id]"
+          >
+            Actualizar
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            name="button"
+            class="btn btn-danger btn-sm"
+            (click)="eliminar(entidadFInanciera)"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -11,6 +11,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormComponent } from "./componentes/divisa/form.component";
 import { FormsModule } from "@angular/forms";
 import { InicioComponent } from "./componentes/inicio/inicio.component";
+import { EntidadFinancieraComponent } from "./componentes/entidad-financiera/entidad-financiera.component";
 
 const RUTAS: Routes = [
   { path: "", component: InicioComponent },
@@ -18,6 +19,7 @@ const RUTAS: Routes = [
   { path: "directivas", component: DirectivaComponent },
   { path: "divisas/form", component: FormComponent },
   { path: "divisas/form/:id", component: FormComponent },
+  { path: "entidades-financieras", component: EntidadFinancieraComponent },
 ];
 
 @NgModule({
@@ -29,6 +31,7 @@ const RUTAS: Routes = [
     DivisaComponent,
     FormComponent,
     InicioComponent,
+    EntidadFinancieraComponent,
   ],
   imports: [
     BrowserModule,

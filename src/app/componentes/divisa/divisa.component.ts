@@ -9,7 +9,7 @@ import { Divisa } from "./divisa";
 })
 export class DivisaComponent implements OnInit {
   public titulo: string = "Divisas";
-  divisas: Divisa[];
+  divisas: Divisa[] = [];
 
   constructor(private divisaService: DivisaService) {
     this.divisaService
