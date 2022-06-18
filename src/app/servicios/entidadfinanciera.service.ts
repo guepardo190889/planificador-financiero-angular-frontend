@@ -36,4 +36,71 @@ export class EntidadfinancieraService {
         })
       );
   }
+
+  actualizar(
+    entidadFinanciera: EntidadFinanciera
+  ): Observable<EntidadFinanciera> {
+    return this.http
+      .put(`${this.url}/${entidadFinanciera.id}`, entidadFinanciera, {
+        headers: this.headers,
+      })
+      .pipe(
+        map((response: any) => {
+          return response as EntidadFinanciera;
+        }),
+        catchError((e) => {
+          if (e.status == 400 || e.status == 409) {
+            return throwError(e);
+          }
+
+          this.router.navigate(["/entidades-financieras"]);
+          Swal.fire("Error", e.error.error, "error");
+
+          return throwError(e);
+        })
+      );
+  }
+
+  eliminar(id: number): Observable<EntidadFinanciera> {
+    return this.http
+      .delete(`${this.url}/${id}`, { headers: this.headers })
+      .pipe(
+        map((response: any) => {
+          return response.divisa as EntidadFinanciera;
+        }),
+        catchError((e) => {
+          this.router.navigate(["/entidades-financieras"]);
+          Swal.fire("Error", e.error.error, "error");
+
+          return throwError(e);
+        })
+      );
+  }
+
+  buscarTodos(): Observable<EntidadFinanciera[]> {
+    return this.http.get(this.url).pipe(
+      map((response: any) => {
+        return response as EntidadFinanciera[];
+      }),
+      catchError((e) => {
+        Swal.fire("Error", e.error.error, "error");
+
+        return throwError(e);
+      })
+    );
+  }
+
+  buscarPorId(id: number): Observable<EntidadFinanciera> {
+    return this.http.get(`${this.url}/${id}`).pipe(
+      map((response: any) => {
+        return response as EntidadFinanciera;
+      }),
+      catchError((e) => {
+        this.router.navigate(["/entidades-financieras"]);
+        Swal.fire("Error", e.error.error, "error");
+
+        return throwError(e);
+      })
+    );
+  }
 }

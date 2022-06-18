@@ -2,4 +2,87 @@
   <li *ngFor="let error of errores">{{ error }}</li>
 </ul>
 
-Funciona
+<div class="card border-primary mb-3">
+  <div class="card-header">{{ titulo }}</div>
+  <div class="card-body text-primary">
+    <form #entidadFinancieraForm="ngForm">
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2 my-2">Nombre</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            name="nombre"
+            class="form-control"
+            [(ngModel)]="entidadFinanciera.nombre"
+            required
+            minlength="1"
+            maxlength="64"
+            #nombre="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+          >
+            <div *ngIf="nombre.errors.required">Nombre es requerido</div>
+            <div *ngIf="nombre.errors.minlength">
+              Nombre debe tener como mínimo 1 caracter
+            </div>
+            <div *ngIf="nombre.errors.maxlength">
+              Nombre debe tener como máximo 64 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="descripcion" class="col-form-label col-sm-2 my-2"
+          >Descripción</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="text"
+            name="descripcion"
+            class="form-control"
+            [(ngModel)]="entidadFinanciera.descripcion"
+            maxlength="128"
+            #descripcion="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              descripcion.invalid && (descripcion.dirty || descripcion.touched)
+            "
+          >
+            <div *ngIf="descripcion.errors.maxlength">
+              Descripción debe tener como máximo 128 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button
+            class="btn btn-primary"
+            role="button"
+            (click)="guardar()"
+            *ngIf="!entidadFinanciera.id; else botonEditar"
+            [disable]="!entidadFinancieraForm.form.valid"
+          >
+            Guardar
+          </button>
+          <ng-template #botonEditar>
+            <button
+              class="btn btn-primary"
+              role="button"
+              (click)="actualizar()"
+              [disabled]="!entidadFinancieraForm.form.valid"
+            >
+              Actualizar
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

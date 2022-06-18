@@ -25,6 +25,10 @@ const RUTAS: Routes = [
     path: "entidades-financieras/form",
     component: EntidadFinancieraFormComponent,
   },
+  {
+    path: "entidades-financieras/form/:id",
+    component: EntidadFinancieraFormComponent,
+  },
 ];
 
 @NgModule({
