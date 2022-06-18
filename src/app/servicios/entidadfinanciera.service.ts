@@ -66,7 +66,7 @@ export class EntidadfinancieraService {
       .delete(`${this.url}/${id}`, { headers: this.headers })
       .pipe(
         map((response: any) => {
-          return response.divisa as EntidadFinanciera;
+          return response as EntidadFinanciera;
         }),
         catchError((e) => {
           this.router.navigate(["/entidades-financieras"]);
