@@ -4,6 +4,7 @@ import { EntidadfinancieraService } from "src/app/servicios/entidadfinanciera.se
 import { TipoentidadfinancieraService } from "src/app/servicios/tipoentidadfinanciera.service";
 import Swal from "sweetalert2";
 import { EntidadFinanciera } from "./entidadfinanciera";
+import { EntidadFinancieraGuardado } from "./entidadfinancieraguardado";
 import { TipoEntidadFinanciera } from "./tipoentidadfinanciera";
 
 @Component({
@@ -56,7 +57,8 @@ export class EntidadFinancieraFormComponent implements OnInit {
           tiposEntidadesFinancieras.filter(
             (tipoEntidadFinanciera: TipoEntidadFinanciera) => {
               if (
-                this.entidadFinanciera.tipo === tipoEntidadFinanciera.nombre
+                this.entidadFinanciera.tipo.nombre ===
+                tipoEntidadFinanciera.nombre
               ) {
                 this.tipoEntidadFinancieraSeleccionada = tipoEntidadFinanciera;
               }
@@ -67,12 +69,20 @@ export class EntidadFinancieraFormComponent implements OnInit {
   }
 
   public guardar(): void {
+    let tipoEntidadFinanciera: string;
+
     if (this.tipoEntidadFinancieraSeleccionada) {
-      this.entidadFinanciera.tipo =
-        this.tipoEntidadFinancieraSeleccionada.nombre;
+      tipoEntidadFinanciera = this.tipoEntidadFinancieraSeleccionada.nombre;
     }
 
-    this.entidadFinancieraService.guardar(this.entidadFinanciera).subscribe(
+    let entidadFinancieraGuardado: EntidadFinancieraGuardado =
+      new EntidadFinancieraGuardado(
+        this.entidadFinanciera.nombre,
+        this.entidadFinanciera.descripcion,
+        tipoEntidadFinanciera
+      );
+
+    this.entidadFinancieraService.guardar(entidadFinancieraGuardado).subscribe(
       (entidadFinancieraGuardada) => {
         this.router.navigate(["/entidades-financieras"]);
         Swal.fire("Guardado", `Guardado realizado exitosamente`, "success");
