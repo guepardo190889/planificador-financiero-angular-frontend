@@ -3,9 +3,12 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { EntidadfinancieraService } from "src/app/servicios/entidadfinanciera.service";
 import { TipoentidadfinancieraService } from "src/app/servicios/tipoentidadfinanciera.service";
 import Swal from "sweetalert2";
-import { EntidadFinancieraGuardado } from "../../modelos/entidadfinancieraguardado";
-import { TipoEntidadFinanciera } from "../../modelos/tipoentidadfinanciera";
-import { EntidadFinanciera } from "src/app/modelos/entidadfinanciera";
+import {
+  EntidadFinanciera,
+  EntidadFinancieraActualizado,
+  EntidadFinancieraGuardado,
+} from "./entidad-financiera.model";
+import { TipoEntidadFinanciera } from "./tipoentidadfinanciera";
 
 @Component({
   selector: "app-entidad-financiera-form",
@@ -94,18 +97,33 @@ export class EntidadFinancieraFormComponent implements OnInit {
   }
 
   public actualizar(): void {
-    this.entidadFinancieraService.actualizar(this.entidadFinanciera).subscribe(
-      (entidadFinancieraAcualizada) => {
-        this.router.navigate(["/entidades-financieras"]);
-        Swal.fire(
-          "Actualizado",
-          `Actualizado realizado exitosamente`,
-          "success"
-        );
-      },
-      (error) => {
-        this.errores = error.error.errores as string[];
-      }
-    );
+    let tipoEntidadFinanciera: string;
+
+    if (this.tipoEntidadFinancieraSeleccionada) {
+      tipoEntidadFinanciera = this.tipoEntidadFinancieraSeleccionada.nombre;
+    }
+
+    let entidadFinancieraActualizado: EntidadFinancieraActualizado =
+      new EntidadFinancieraActualizado(
+        this.entidadFinanciera.nombre,
+        this.entidadFinanciera.descripcion,
+        tipoEntidadFinanciera
+      );
+
+    this.entidadFinancieraService
+      .actualizar(this.entidadFinanciera.id, entidadFinancieraActualizado)
+      .subscribe(
+        (entidadFinancieraAcualizada) => {
+          this.router.navigate(["/entidades-financieras"]);
+          Swal.fire(
+            "Actualizado",
+            `Actualizado realizado exitosamente`,
+            "success"
+          );
+        },
+        (error) => {
+          this.errores = error.error.errores as string[];
+        }
+      );
   }
 }

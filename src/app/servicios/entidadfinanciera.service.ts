@@ -4,8 +4,11 @@ import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import Swal from "sweetalert2";
-import { EntidadFinancieraGuardado } from "../modelos/entidadfinancieraguardado";
-import { EntidadFinanciera } from "../modelos/entidadfinanciera";
+import {
+  EntidadFinanciera,
+  EntidadFinancieraActualizado,
+  EntidadFinancieraGuardado,
+} from "../componentes/entidad-financiera/entidad-financiera.model";
 
 @Injectable({
   providedIn: "root",
@@ -41,10 +44,11 @@ export class EntidadfinancieraService {
   }
 
   actualizar(
-    entidadFinanciera: EntidadFinanciera
+    id: number,
+    entidadFinanciera: EntidadFinancieraActualizado
   ): Observable<EntidadFinanciera> {
     return this.http
-      .put(`${this.url}/${entidadFinanciera.id}`, entidadFinanciera, {
+      .put(`${this.url}/${id}`, entidadFinanciera, {
         headers: this.headers,
       })
       .pipe(
