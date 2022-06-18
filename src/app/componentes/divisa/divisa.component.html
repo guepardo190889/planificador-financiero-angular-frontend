@@ -1,5 +1,5 @@
 <div class="card border-primary mb-3">
-  <div class="card-header">{{titulo}}</div>
+  <div class="card-header">{{ titulo }}</div>
   <div class="card-body text-primary">
     <div class="my-2 text-left">
       <button
@@ -7,15 +7,18 @@
         type="button"
         [routerLink]="['/divisas/form']"
       >
-        Guardar Divisa
+        Guardar
       </button>
     </div>
 
     <div *ngIf="divisas?.length == 0" class="alert alert-info">
-      No se encontraron divisas 
+      No se encontraron divisas
     </div>
 
-    <table class="table table-bordered table-striped" *ngIf="divisas?.length > 0">
+    <table
+      class="table table-bordered table-striped"
+      *ngIf="divisas?.length > 0"
+    >
       <thead>
         <tr>
           <!--th>Id</th-->

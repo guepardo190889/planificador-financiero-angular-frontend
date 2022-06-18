@@ -28,6 +28,8 @@ export class EntidadFinancieraFormComponent implements OnInit {
       let id: number = params[`id`];
 
       if (id) {
+        this.titulo = "Actualizar Entidad Financiera";
+
         this.entidadFinancieraService
           .buscarPorId(id)
           .subscribe((entidadFinanciera) => {

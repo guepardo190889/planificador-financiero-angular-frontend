@@ -28,6 +28,8 @@ export class FormComponent implements OnInit {
       let id: number = params[`id`];
 
       if (id) {
+        this.titulo = "Actualizar Divisa";
+
         this.divisaService
           .buscarPorId(id)
           .subscribe((divisa) => (this.divisa = divisa));
