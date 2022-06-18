@@ -8,7 +8,7 @@ import {
   EntidadFinancieraActualizado,
   EntidadFinancieraGuardado,
 } from "./entidad-financiera.model";
-import { TipoEntidadFinanciera } from "./tipoentidadfinanciera";
+import { TipoEntidadFinanciera } from "./tipo-entidad-financiera.model";
 
 @Component({
   selector: "app-entidad-financiera-form",

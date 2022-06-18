@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { catchError, map, Observable, throwError } from "rxjs";
 import Swal from "sweetalert2";
-import { TipoEntidadFinanciera } from "../componentes/entidad-financiera/tipoentidadfinanciera";
+import { TipoEntidadFinanciera } from "../componentes/entidad-financiera/tipo-entidad-financiera.model";
 
 @Injectable({
   providedIn: "root",

@@ -1,4 +1,4 @@
-import { TipoEntidadFinanciera } from "./tipoentidadfinanciera";
+import { TipoEntidadFinanciera } from "./tipo-entidad-financiera.model";
 
 export class EntidadFinanciera {
   id: number;
