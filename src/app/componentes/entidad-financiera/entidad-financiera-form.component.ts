@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { EntidadfinancieraService } from "src/app/servicios/entidadfinanciera.service";
 import { TipoentidadfinancieraService } from "src/app/servicios/tipoentidadfinanciera.service";
 import Swal from "sweetalert2";
-import { EntidadFinanciera } from "./entidadfinanciera";
-import { EntidadFinancieraGuardado } from "./entidadfinancieraguardado";
-import { TipoEntidadFinanciera } from "./tipoentidadfinanciera";
+import { EntidadFinancieraGuardado } from "../../modelos/entidadfinancieraguardado";
+import { TipoEntidadFinanciera } from "../../modelos/tipoentidadfinanciera";
+import { EntidadFinanciera } from "src/app/modelos/entidadfinanciera";
 
 @Component({
   selector: "app-entidad-financiera-form",

@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import Swal from "sweetalert2";
-import { Divisa } from "../componentes/divisa/divisa";
+import { Divisa } from "../modelos/divisa";
 
 @Injectable({
   providedIn: "root",

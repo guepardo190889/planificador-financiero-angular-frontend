@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DivisaService } from "src/app/servicios/divisa.service";
 import Swal from "sweetalert2";
-import { Divisa } from "./divisa";
+import { Divisa } from "../../modelos/divisa";
 
 @Component({
   selector: "app-form",

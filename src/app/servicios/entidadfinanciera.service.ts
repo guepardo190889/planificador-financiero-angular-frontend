@@ -4,8 +4,8 @@ import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import Swal from "sweetalert2";
-import { EntidadFinanciera } from "../componentes/entidad-financiera/entidadfinanciera";
-import { EntidadFinancieraGuardado } from "../componentes/entidad-financiera/entidadfinancieraguardado";
+import { EntidadFinancieraGuardado } from "../modelos/entidadfinancieraguardado";
+import { EntidadFinanciera } from "../modelos/entidadfinanciera";
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +18,9 @@ export class EntidadfinancieraService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  guardar(entidadFinanciera: EntidadFinancieraGuardado): Observable<EntidadFinanciera> {
+  guardar(
+    entidadFinanciera: EntidadFinancieraGuardado
+  ): Observable<EntidadFinanciera> {
     return this.http
       .post(this.url, entidadFinanciera, { headers: this.headers })
       .pipe(

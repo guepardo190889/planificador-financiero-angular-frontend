@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { EntidadFinanciera } from "src/app/modelos/entidadfinanciera";
 import { EntidadfinancieraService } from "src/app/servicios/entidadfinanciera.service";
 import { TipoentidadfinancieraService } from "src/app/servicios/tipoentidadfinanciera.service";
 import Swal from "sweetalert2";
-import { EntidadFinanciera } from "./entidadfinanciera";
 
 @Component({
   selector: "app-entidad-financiera",
