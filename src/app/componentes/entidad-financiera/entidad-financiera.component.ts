@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { EntidadfinancieraService } from "src/app/servicios/entidadfinanciera.service";
+import { TipoentidadfinancieraService } from "src/app/servicios/tipoentidadfinanciera.service";
 import Swal from "sweetalert2";
 import { EntidadFinanciera } from "./entidadfinanciera";
 
@@ -10,6 +11,7 @@ import { EntidadFinanciera } from "./entidadfinanciera";
 export class EntidadFinancieraComponent implements OnInit {
   public titulo: string = "Entidades financieras";
   entidadesFinancieras: EntidadFinanciera[] = [];
+  tiposEntidadesFinancieras: String[] = [];
 
   constructor(private entidadFinancieraService: EntidadfinancieraService) {
     this.entidadFinancieraService
