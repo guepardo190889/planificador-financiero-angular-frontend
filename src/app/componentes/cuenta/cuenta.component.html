@@ -2,48 +2,48 @@
   <div class="card-header">
     {{ titulo }}
   </div>
+
   <div class="card-body text-primary">
     <div class="my-2 text-left">
       <button
         type="button"
         class="btn btn-rounded btn-primary"
-        [routerLink]="['/entidades-financieras/form']"
+        [routerLink]="['/cuentas/form']"
       >
         Guardar
       </button>
     </div>
 
-    <div class="alert alert-info" *ngIf="entidadesFinancieras?.length == 0">
-      No se encontraron entidades financieras
+    <div class="alert alert-info" *ngIf="cuentas?.length == 0">
+      No se encontraron cuentas
     </div>
 
     <table
       class="table table-bordered table-striped"
-      *ngIf="entidadesFinancieras?.length > 0"
+      *ngIf="cuentas?.length > 0"
     >
       <thead>
         <tr>
           <th>Nombre</th>
-          <th>Descripción</th>
-          <th>Tipo</th>
+          <th>Saldo</th>
+          <th>Divisa</th>
+          <ht>Entidad</ht>
           <th>Actualizar</th>
           <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let entidadFinanciera of entidadesFinancieras">
-          <td>{{ entidadFinanciera.nombre }}</td>
-          <td>{{ entidadFinanciera.descripcion }}</td>
-          <td>{{ entidadFinanciera.tipo.descripcion }}</td>
+        <tr *ngFor="let cuenta of cuentas">
+          <td>{{ cuenta.nombre }}</td>
+          <td>{{ cuenta.saldo }}</td>
+          <td>{{ cuenta.divisa.nombre }}</td>
+          <td>{{ cuenta.entidad ? cuenta.entidad.nombre : "" }}</td>
           <td>
             <button
               type="button"
               name="button"
               class="btn btn-primary btn-sm"
-              [routerLink]="[
-                '/entidades-financieras/form',
-                entidadFinanciera.id
-              ]"
+              [routerLink]="['/cuentas/form', cuenta.id]"
             >
               Actualizar
             </button>
@@ -53,7 +53,7 @@
               type="button"
               name="button"
               class="btn btn-danger btn-sm"
-              (click)="eliminar(entidadFinanciera)"
+              (click)="eliminar(cuenta)"
             >
               Eliminar
             </button>

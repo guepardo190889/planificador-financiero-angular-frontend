@@ -1,0 +1,152 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+  <li *ngFor="let error of errores">{{ error }}</li>
+</ul>
+
+<div class="card border-primary mb-3">
+  <div class="card-header">
+    {{ titulo }}
+  </div>
+  <div class="card-body text-primary">
+    <form #cuentaForm="ngForm">
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2 my-2">
+          Nombre
+        </label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            name="nombre"
+            class="form-control"
+            [(ngModel)]="cuenta.nombre"
+            required
+            minlength="1"
+            maxlength="32"
+            #nombre="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+          >
+            <div *ngIf="nombre.errors.required">Nombre es requerido</div>
+            <div *ngIf="nombre.errors.minlength">
+              Nombre debe tener como mínimo 1 caracter
+            </div>
+            <div *ngIf="nombre.errors.maxlength">
+              Nombre debe tener como máximo 32 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="saldo" class="col-form-label col-sm-2 my-2">Saldo</label>
+        <div class="col-sm-6">
+          <input
+            currencyMask
+            [options]="{
+              align: 'left',
+              prefix: '$',
+              thousands: ',',
+              decimal: '.',
+              allowNegative: true
+            }"
+            name="saldo"
+            class="form-control"
+            [(ngModel)]="cuenta.saldo"
+            required
+            min="-999999999999.99"
+            max="999999999999.99"
+            minlength="6"
+            maxlength="20"
+            #saldo="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="saldo.invalid && (saldo.dirty || saldo.touched)"
+          >
+            <div *ngIf="saldo.errors.required">Saldo es requerido</div>
+            <div *ngIf="saldo.errors.min">
+              El saldo debe ser mayor o igual a -999,999,999,999
+            </div>
+            <div *ngIf="saldo.errors.max">
+              El saldo debe ser menor o igual a 999,999,999,999
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="divisa" class="col-form-label col-sm-2 my-2">Divisa</label>
+        <div class="col-sm-6">
+          <select
+            name="tipo"
+            class="form-select"
+            [(ngModel)]="divisaSeleccionada"
+          >
+            <option *ngFor="let divisa of divisas" [ngValue]="divisa">
+              {{ divisa.nombre }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="entidadFinanciera" class="col-form-label col-sm-2 my-2"
+          >Entidad financiera</label
+        >
+        <div class="col-sm-6">
+          <select
+            name="entidadFinanciera"
+            class="form-select"
+            [(ngModel)]="entidadFinancieraSeleccionada"
+          >
+            <option
+              *ngFor="let entidadFinanciera of entidadesFinancieras"
+              [ngValue]="entidadFinanciera"
+            >
+              {{ entidadFinanciera.nombre }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="porDefecto" class="col-form-label col-sm-2 my-2"
+          >Por defecto</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [(ngModel)]="cuenta.porDefecto"
+            name="porDefecto"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button
+            class="btn btn-primary"
+            role="button"
+            (click)="guardar()"
+            *ngIf="!cuenta.id; else botonEditar"
+            [disable]="!cuentaForm.form.valid"
+          >
+            Guardar
+          </button>
+          <ng-template #botonEditar>
+            <button
+              class="btn btn-primary"
+              role="button"
+              (click)="actualizar()"
+              [disabled]="!cuentaForm.form.valid"
+            >
+              Actualizar
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

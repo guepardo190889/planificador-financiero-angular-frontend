@@ -13,6 +13,9 @@ import { FormsModule } from "@angular/forms";
 import { InicioComponent } from "./componentes/inicio/inicio.component";
 import { EntidadFinancieraComponent } from "./componentes/entidad-financiera/entidad-financiera.component";
 import { EntidadFinancieraFormComponent } from "./componentes/entidad-financiera/entidad-financiera-form.component";
+import { CuentaComponent } from "./componentes/cuenta/cuenta.component";
+import { CuentaFormComponent } from "./componentes/cuenta/cuenta-form.component";
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 const RUTAS: Routes = [
   { path: "", component: InicioComponent },
@@ -29,6 +32,9 @@ const RUTAS: Routes = [
     path: "entidades-financieras/form/:id",
     component: EntidadFinancieraFormComponent,
   },
+  { path: "cuentas", component: CuentaComponent },
+  { path: "cuentas/form", component: CuentaFormComponent },
+  { path: "cuentas/form/:id", component: CuentaFormComponent },
 ];
 
 @NgModule({
@@ -42,12 +48,15 @@ const RUTAS: Routes = [
     InicioComponent,
     EntidadFinancieraComponent,
     EntidadFinancieraFormComponent,
+    CuentaComponent,
+    CuentaFormComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(RUTAS),
+    CurrencyMaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

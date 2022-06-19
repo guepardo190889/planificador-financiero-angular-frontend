@@ -1,5 +1,5 @@
 <ul class="alert alert-danger" *ngIf="errores?.length > 0">
-  <li *ngFor="let error of errores">{{error}}</li>
+  <li *ngFor="let error of errores">{{ error }}</li>
 </ul>
 
 <div class="card border-primary mb-3">
@@ -32,46 +32,44 @@
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="form-group row">
-          <label for="codigo" class="col-form-label col-sm-2 my-2"
-            >Código</label
+      <div class="form-group row">
+        <label for="codigo" class="col-form-label col-sm-2 my-2">Código</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="divisa.codigo"
+            name="codigo"
+            required
+            minlength="3"
+            maxlength="3"
+            #codigo="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)"
           >
-          <div class="col-sm-6">
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="divisa.codigo"
-              name="codigo"
-              required
-              minlength="3"
-              maxlength="3"
-              #codigo="ngModel"
-            />
-            <div
-              class="alert alert-danger"
-              *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)"
-            >
-              <div *ngIf="codigo.errors.required">Código es requerido</div>
-              <div *ngIf="codigo.errors.minlength || codigo.errors.maxlength">
-                Código debe tener exactamente 3 caracteres
-              </div>
+            <div *ngIf="codigo.errors.required">Código es requerido</div>
+            <div *ngIf="codigo.errors.minlength || codigo.errors.maxlength">
+              Código debe tener exactamente 3 caracteres
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="form-group row">
-          <label for="porDefecto" class="col-form-label col-sm-2 my-2"
-            >Por defecto</label
-          >
-          <div class="col-sm-6">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              [(ngModel)]="divisa.porDefecto"
-              name="porDefecto"
-            />
-          </div>
+      <div class="form-group row">
+        <label for="porDefecto" class="col-form-label col-sm-2 my-2"
+          >Por defecto</label
+        >
+        <div class="col-sm-6">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [(ngModel)]="divisa.porDefecto"
+            name="porDefecto"
+          />
         </div>
       </div>
 
