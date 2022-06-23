@@ -9,24 +9,20 @@ export class EntidadFinanciera {
 
 export class EntidadFinancieraGuardado {
   nombre: string;
-  descripcion: string;
   tipo: string;
 
-  constructor(nombre: string, descripcion?: string, tipo?: string) {
+  constructor(nombre: string, tipo?: string) {
     this.nombre = nombre;
-    this.descripcion = descripcion;
     this.tipo = tipo;
   }
 }
 
 export class EntidadFinancieraActualizado {
   nombre: string;
-  descripcion: string;
   tipo: string;
 
-  constructor(nombre: string, descripcion?: string, tipo?: string) {
+  constructor(nombre: string, tipo?: string) {
     this.nombre = nombre;
-    this.descripcion = descripcion;
     this.tipo = tipo;
   }
 }

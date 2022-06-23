@@ -81,7 +81,6 @@ export class EntidadFinancieraFormComponent implements OnInit {
     let entidadFinancieraGuardado: EntidadFinancieraGuardado =
       new EntidadFinancieraGuardado(
         this.entidadFinanciera.nombre,
-        this.entidadFinanciera.descripcion,
         tipoEntidadFinanciera
       );
 
@@ -106,7 +105,6 @@ export class EntidadFinancieraFormComponent implements OnInit {
     let entidadFinancieraActualizado: EntidadFinancieraActualizado =
       new EntidadFinancieraActualizado(
         this.entidadFinanciera.nombre,
-        this.entidadFinanciera.descripcion,
         tipoEntidadFinanciera
       );
 

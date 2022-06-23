@@ -24,7 +24,6 @@
       <thead>
         <tr>
           <th>Nombre</th>
-          <th>Descripción</th>
           <th>Tipo</th>
           <th>Actualizar</th>
           <th>Eliminar</th>
@@ -33,7 +32,6 @@
       <tbody>
         <tr *ngFor="let entidadFinanciera of entidadesFinancieras">
           <td>{{ entidadFinanciera.nombre }}</td>
-          <td>{{ entidadFinanciera.descripcion }}</td>
           <td>{{ entidadFinanciera.tipo.descripcion }}</td>
           <td>
             <button

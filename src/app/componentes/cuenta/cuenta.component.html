@@ -27,7 +27,7 @@
           <th>Nombre</th>
           <th>Saldo</th>
           <th>Divisa</th>
-          <ht>Entidad</ht>
+          <th>Entidad</th>
           <th>Actualizar</th>
           <th>Eliminar</th>
         </tr>
@@ -37,7 +37,7 @@
           <td>{{ cuenta.nombre }}</td>
           <td>{{ cuenta.saldo }}</td>
           <td>{{ cuenta.divisa.nombre }}</td>
-          <td>{{ cuenta.entidad ? cuenta.entidad.nombre : "" }}</td>
+          <td>{{ cuenta.entidadFinanciera ? cuenta.entidadFinanciera.nombre : "" }}</td>
           <td>
             <button
               type="button"
