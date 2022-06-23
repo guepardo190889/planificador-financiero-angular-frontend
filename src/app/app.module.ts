@@ -16,6 +16,8 @@ import { EntidadFinancieraFormComponent } from "./componentes/entidad-financiera
 import { CuentaComponent } from "./componentes/cuenta/cuenta.component";
 import { CuentaFormComponent } from "./componentes/cuenta/cuenta-form.component";
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CategoriaComponent } from "./componentes/categoria/categoria.component";
+import { CategoriaFormComponent } from "./componentes/categoria/categoria-form.component";
 
 const RUTAS: Routes = [
   { path: "", component: InicioComponent },
@@ -35,6 +37,9 @@ const RUTAS: Routes = [
   { path: "cuentas", component: CuentaComponent },
   { path: "cuentas/form", component: CuentaFormComponent },
   { path: "cuentas/form/:id", component: CuentaFormComponent },
+  { path: "categorias", component: CategoriaComponent },
+  { path: "categorias/form", component: CategoriaFormComponent },
+  { path: "categorias/form/:id", component: CategoriaFormComponent },
 ];
 
 @NgModule({
@@ -50,6 +55,8 @@ const RUTAS: Routes = [
     EntidadFinancieraFormComponent,
     CuentaComponent,
     CuentaFormComponent,
+    CategoriaComponent,
+    CategoriaFormComponent,
   ],
   imports: [
     BrowserModule,
