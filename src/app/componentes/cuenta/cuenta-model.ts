@@ -50,20 +50,20 @@ export class CuentaActualizado {
   nombre: string;
   saldo: number;
   porDefecto: boolean;
-  divisa: Divisa;
-  entidadFinanciera: EntidadFinanciera;
+  divisaId: number;
+  entidadFinancieraId: number;
 
   constructor(
     nombre: string,
     saldo: number = 0,
     porDefecto: boolean = false,
-    divisa: Divisa,
-    entidadFinanciera?: EntidadFinanciera
+    divisaId: number,
+    entidadFinancieraId?: number
   ) {
     this.nombre = nombre;
     this.saldo = saldo;
     this.porDefecto = porDefecto;
-    this.divisa = divisa;
-    this.entidadFinanciera = entidadFinanciera;
+    this.divisaId = divisaId;
+    this.entidadFinancieraId = entidadFinancieraId;
   }
 }

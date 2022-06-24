@@ -6,7 +6,7 @@ import { DivisaService } from "src/app/servicios/divisa.service";
 import { EntidadfinancieraService } from "src/app/servicios/entidadfinanciera.service";
 import Swal from "sweetalert2";
 import { EntidadFinanciera } from "../entidad-financiera/entidad-financiera.model";
-import { Cuenta, CuentaGuardado } from "./cuenta-model";
+import { Cuenta, CuentaActualizado, CuentaGuardado } from "./cuenta-model";
 
 @Component({
   selector: "app-cuenta-form",
@@ -104,7 +104,7 @@ export class CuentaFormComponent implements OnInit {
       ? this.entidadFinancieraSeleccionada.id
       : null;
 
-    let cuenta: CuentaGuardado = new CuentaGuardado(
+    let cuentaGuardado: CuentaGuardado = new CuentaGuardado(
       this.cuenta.nombre,
       this.cuenta.saldo,
       this.cuenta.porDefecto,
@@ -112,7 +112,7 @@ export class CuentaFormComponent implements OnInit {
       entidadFinancieraId
     );
 
-    this.cuentaService.guardar(cuenta).subscribe(
+    this.cuentaService.guardar(cuentaGuardado).subscribe(
       (entidadFinancieraGuardada) => {
         this.router.navigate(["/cuentas"]);
         Swal.fire("Guardado", `Guardado realizado exitosamente`, "success");
@@ -126,5 +126,31 @@ export class CuentaFormComponent implements OnInit {
   /**
    * Actualiza una cuenta existente
    */
-  public actualizar(): void {}
+  public actualizar(): void {
+    let entidadFinancieraId: number = this.entidadFinancieraSeleccionada
+      ? this.entidadFinancieraSeleccionada.id
+      : null;
+
+    let cuentaActualizado: CuentaActualizado = new CuentaActualizado(
+      this.cuenta.nombre,
+      this.cuenta.saldo,
+      this.cuenta.porDefecto,
+      this.divisaSeleccionada.id,
+      entidadFinancieraId
+    );
+
+    this.cuentaService.actualizar(this.cuenta.id, cuentaActualizado).subscribe(
+      (entidadFinancieraAcualizada) => {
+        this.router.navigate(["/cuentas"]);
+        Swal.fire(
+          "Actualizado",
+          `Actualizado realizado exitosamente`,
+          "success"
+        );
+      },
+      (error) => {
+        this.errores = error.error.errores as string[];
+      }
+    );
+  }
 }

@@ -34,14 +34,14 @@
       <tbody>
         <tr *ngFor="let categoria of categorias">
           <td>{{ categoria.nombre }}</td>
-          <td>{{ categoria.tipo }}</td>
+          <td>{{ categoria.tipo.descripcion }}</td>
           <td>{{ categoria.descripcion }}</td>
           <td>
             <button
               type="button"
               name="button"
               class="btn btn-primary btn-sm"
-              [routerLink]="['/categorias/form', cuenta.id]"
+              [routerLink]="['/categorias/form', categoria.id]"
             >
               Actualizar
             </button>

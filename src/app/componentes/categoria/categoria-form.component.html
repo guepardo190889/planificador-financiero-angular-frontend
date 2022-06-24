@@ -1,1 +1,109 @@
-<p>categoria-form works!</p>
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+  <li *ngFor="let error of errores">{{ error }}</li>
+</ul>
+
+<div class="card border-primary mb-3">
+  <div class="card-header">{{ titulo }}</div>
+
+  <div class="card-body text-primary">
+    <form #categoriaForm="ngForm">
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2 my-2">
+          Nombre
+        </label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            name="nombre"
+            class="form-control"
+            [(ngModel)]="categoria.nombre"
+            required
+            minlength="1"
+            maxlength="32"
+            #nombre="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+          >
+            <div *ngIf="nombre.errors.required">Nombre es requerido</div>
+            <div *ngIf="nombre.errors.minlength">
+              Nombre debe tener como mínimo 1 caracter
+            </div>
+            <div *ngIf="nombre.errors.maxlength">
+              Nombre debe tener como máximo 32 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="descripcion" class="col-form-label col-sm-2 my-2">
+          Descripcion
+        </label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            name="descripcion"
+            class="form-control"
+            [(ngModel)]="categoria.descripcion"
+            maxlength="128"
+            #descripcion="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+          >
+            <div *ngIf="descripcion.errors.maxlength">
+              Descripcion debe tener como máximo 128 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="tipoCategoria" class="col-form-label col-sm-2 my-2"
+          >Tipo</label
+        >
+        <div class="col-sm-6">
+          <select
+            name="tipo"
+            class="form-select"
+            [(ngModel)]="tipoCategoriaSeleccionada"
+          >
+            <option
+              *ngFor="let tipoCategoria of tiposCategorias"
+              [ngValue]="tipoCategoria"
+            >
+              {{ tipoCategoria.descripcion }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button
+            class="btn btn-primary"
+            role="button"
+            (click)="guardar()"
+            *ngIf="!categoria.id; else botonEditar"
+            [disable]="!categoriaForm.form.valid"
+          >
+            Guardar
+          </button>
+          <ng-template #botonEditar>
+            <button
+              class="btn btn-primary"
+              role="button"
+              (click)="actualizar()"
+              [disabled]="!categoriaForm.form.valid"
+            >
+              Actualizar
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
