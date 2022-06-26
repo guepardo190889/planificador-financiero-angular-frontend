@@ -15,11 +15,11 @@
           <input
             type="text"
             name="nombre"
-            class="form-control"
-            [(ngModel)]="categoria.nombre"
             required
             minlength="1"
             maxlength="32"
+            class="form-control"
+            [(ngModel)]="categoria.nombre"
             #nombre="ngModel"
           />
           <div
@@ -45,9 +45,9 @@
           <input
             type="text"
             name="descripcion"
+            maxlength="128"
             class="form-control"
             [(ngModel)]="categoria.descripcion"
-            maxlength="128"
             #descripcion="ngModel"
           />
           <div
@@ -68,8 +68,10 @@
         <div class="col-sm-6">
           <select
             name="tipo"
+            required
             class="form-select"
             [(ngModel)]="tipoCategoriaSeleccionada"
+            #tipo="ngModel"
           >
             <option
               *ngFor="let tipoCategoria of tiposCategorias"
@@ -78,6 +80,14 @@
               {{ tipoCategoria.descripcion }}
             </option>
           </select>
+          <div
+            class="alert alert-danger"
+            *ngIf="tipo.invalid && (tipo.dirty || tipo.touched)"
+          >
+            <div *ngIf="tipo.errors.required">
+              Tipo es requerido
+            </div>
+          </div>
         </div>
       </div>
 
