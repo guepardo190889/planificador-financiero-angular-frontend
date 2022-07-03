@@ -17,6 +17,10 @@ import { CuentaFormComponent } from "./componentes/cuenta/cuenta-form.component"
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { CategoriaComponent } from "./componentes/categoria/categoria.component";
 import { CategoriaFormComponent } from "./componentes/categoria/categoria-form.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatTreeModule } from "@angular/material/tree";
+import {TreeComponent} from "./tree/tree.component";
 
 const RUTAS: Routes = [
   { path: "", component: InicioComponent },
@@ -54,6 +58,7 @@ const RUTAS: Routes = [
     CuentaFormComponent,
     CategoriaComponent,
     CategoriaFormComponent,
+    TreeComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +66,9 @@ const RUTAS: Routes = [
     FormsModule,
     RouterModule.forRoot(RUTAS),
     CurrencyMaskModule,
+    BrowserAnimationsModule,
+    MatNativeDateModule,
+    MatTreeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
