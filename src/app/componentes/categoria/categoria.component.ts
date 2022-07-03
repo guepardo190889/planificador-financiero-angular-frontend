@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CategoriaService } from "src/app/servicios/categoria.service";
 import Swal from "sweetalert2";
-import { Categoria } from "./categoria-model";
+import { Categoria, FoodNode } from "./categoria-model";
 
 @Component({
   selector: "app-categoria",

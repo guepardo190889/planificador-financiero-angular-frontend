@@ -66,7 +66,7 @@ export class CategoriaFormComponent implements OnInit {
     let categoriaGuardado: CategoriaGuardado = new CategoriaGuardado(
       this.categoria.nombre,
       this.tipoCategoriaSeleccionada.nombre,
-      this.categoria.descripcion
+      //this.categoria.descripcion
     );
     console.log(categoriaGuardado);
 
@@ -94,7 +94,7 @@ export class CategoriaFormComponent implements OnInit {
     let categoriaActualizado: CategoriaActualizado = new CategoriaActualizado(
       this.categoria.nombre,
       tipoCategoria,
-      this.categoria.descripcion
+      //this.categoria.descripcion
     );
 
     this.categoriaService

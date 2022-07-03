@@ -4,7 +4,7 @@ export class Categoria {
   id: number;
   nombre: string;
   tipo: TipoCategoria;
-  principal: boolean;
+  id_categoria_padre: number;
   descripcion: string;
 }
 
