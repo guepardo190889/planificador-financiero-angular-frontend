@@ -1,1 +1,39 @@
 <p>principal works!</p>
+
+<form #cuentaForm="ngForm">
+  <div class="form-group row">
+    <label for="categoria" class="col-form-label col-sm-2 my-2"
+      >Categoría</label
+    >
+    <div class="col-sm-6">
+      <select
+        name="categoria"
+        class="form-select"
+        [(ngModel)]="categoriaSeleccionada"
+      >
+        <option *ngFor="let categoria of categorias" [ngValue]="categoria">
+          {{ categoria.nombre }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="btn-group col-sm-6">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Action
+    </button>
+    <ul class="dropdown-menu col-sm-6">
+        <li *ngFor="let categoria of categorias">{{categoria.nombre}}</li>
+      <li><hr class="dropdown-divider"></li>
+    </ul>
+  </div>
+
+  <button
+  class="btn btn-primary"
+  role="button"
+  (click)="guardar()"
+>
+  Guardar
+</button>
+
+</form>
