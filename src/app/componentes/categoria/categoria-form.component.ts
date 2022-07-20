@@ -62,6 +62,12 @@ export class CategoriaFormComponent implements OnInit {
     }
   }
 
+  buscarTodosCategoriasPrincipales(
+    autoseleccionarParaActualizacion: boolean
+  ): void {
+    
+  }
+
   public guardar(): void {
     let categoriaGuardado: CategoriaGuardado = new CategoriaGuardado(
       this.categoria.nombre,
@@ -94,7 +100,8 @@ export class CategoriaFormComponent implements OnInit {
     let categoriaActualizado: CategoriaActualizado = new CategoriaActualizado(
       this.categoria.nombre,
       tipoCategoria,
-      //this.categoria.descripcion
+      true,
+      ''
     );
 
     this.categoriaService
