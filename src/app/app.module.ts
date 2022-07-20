@@ -18,7 +18,8 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 import { CategoriaComponent } from "./componentes/categoria/categoria.component";
 import { CategoriaFormComponent } from "./componentes/categoria/categoria-form.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from "@angular/material/menu";
+import { MatButtonModule } from "@angular/material/button";
 
 const RUTAS: Routes = [
   { path: "", component: InicioComponent },
@@ -64,7 +65,8 @@ const RUTAS: Routes = [
     RouterModule.forRoot(RUTAS),
     CurrencyMaskModule,
     BrowserAnimationsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
