@@ -21,7 +21,6 @@
     "@angular/platform-browser": "~13.3.9",
     "@angular/platform-browser-dynamic": "~13.3.9",
     "@angular/router": "~13.3.9",
-    "bootstrap": "^5.2.0-beta1",
     "core-js": "^2.5.4",
     "ng2-currency-mask": "^13.0.3",
     "rxjs": "~7.5.5",
