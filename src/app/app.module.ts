@@ -17,6 +17,7 @@ import { CuentaFormComponent } from "./componentes/cuenta/cuenta-form.component"
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { CategoriaComponent } from "./componentes/categoria/categoria.component";
 import { CategoriaFormComponent } from "./componentes/categoria/categoria-form.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const RUTAS: Routes = [
   { path: "", component: InicioComponent },
@@ -61,6 +62,7 @@ const RUTAS: Routes = [
     FormsModule,
     RouterModule.forRoot(RUTAS),
     CurrencyMaskModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
